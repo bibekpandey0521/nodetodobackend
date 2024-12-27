@@ -33,8 +33,8 @@ app.post('/',async(req,res) => {
 app.put('/:id',async(req,res)=>{
     const {id} = req.params;
     const data = req.body;
-    const user = await Todo.findById(id);
-    if(user){
+    const todo = await Todo.findById(id);
+    if(todo){
         const updatedTodo = await Todo.updateOne({
          _id:id,   
         },
@@ -43,21 +43,21 @@ app.put('/:id',async(req,res)=>{
     return res.status(200).json({ updatedTodo });
 
     }
-    return res.status(404).json({ message: 'User doesnot exist' });
+    return res.status(404).json({ message: 'Todo doesnot exist' });
 
 });
 
 app.delete('/:id',async(req,res)=>{
     const {id} = req.params;
     console.log(req.params.id)
-    const user = await Todo.findById(id);
-    if(user){
+    const todo = await Todo.findById(id);
+    if(todo){
         const deleteTodo = await Todo.deleteOne({
             _id:id,
         });
         return res.status(200).json({deleteTodo});
     }
     return res.status(404).json({
-        message:'User doesnot exits'
+        message:'Tod doesnot exits'
     });
 });
