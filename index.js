@@ -58,6 +58,6 @@ app.delete('/:id',async(req,res)=>{
         return res.status(200).json({deleteTodo});
     }
     return res.status(404).json({
-        message:'Tod doesnot exits'
+        message:'Todo doesnot exits'
     });
 });
